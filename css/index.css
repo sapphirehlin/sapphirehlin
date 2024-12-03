@@ -1,0 +1,39 @@
+.profile-section {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #ccd0da;
+    color: #4c4f69;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.profile-section h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: #209fb5;
+}
+
+.profile-section p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.profile-section a {
+    color: #04a5e5;
+}
+
+@media (max-width: 1000px) {
+    .profile-section {
+        margin: 2% auto;
+        padding: 1.5em;
+    }
+
+    .profile-section h1 {
+        font-size: 1em;
+    }
+
+    .profile-section p {
+        font-size: 0.9em;
+    }
+}

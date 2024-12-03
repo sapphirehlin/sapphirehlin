@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar with Dropdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/main.css">
+  </head>
+
+  <body>
+  <!--nav items start-->
+  <!--shouldnt be copying and pasting the code but bunch of issues happen if i dont put the code directly in.-->
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="/">Home</a></li>
+      <li>
+        <a>Research</a>
+        <div class="dropdown-content">
+          <a href="/research/journals.html">in Journals</a>
+          <a href="/research/books.html">in Books</a>
+          <a href="/research/conferences.html">at Conferences</a>
+        </div>
+      </li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <div class="logo-container">
+      <img src="/image.png" alt="Logo" class="logo-img">
+      <h2 class="site-title">Sapphire Lin</h2>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+  <script src="/main.js"></script>
+  <!--nav items end-->
+
+  </body>
+</html>

@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #eff1f5;
+    --scrollbar-color-thumb: #494d64;
+    --scrollbar-color-track: #24273a;
+    --scrollbar-width: thin;
+    --scrollbar-width-legacy: 5px;
+}
+
+@supports selector(::-webkit-scrollbar) {
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-color-thumb);
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-color-track);
+    }
+    ::-webkit-scrollbar {
+        max-width: var(--scrollbar-width-legacy);
+        max-height: var(--scrollbar-width-legacy);
+    }
+}
+
+nav {
+    background-color: #ccd0da;
+    color: white;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    flex: 1;
+}
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #4c4f69;
+    background-color: #4c4f69;
+    object-fit: cover;
+}
+.site-title {
+    text-align: center;
+    font-size: 1.2em;
+    color: #4c4f69;
+}
+.menu {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+    position: absolute;
+    left: 1em;
+}
+.menu li {
+    position: relative;
+}
+.menu a {
+    text-decoration: none;
+    color: #4c4f69;
+    padding: 0.5em 1em;
+    background-color: #1e2030;
+    border-radius: 7px;
+    display: block;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: background-color 0.5s ease;
+}
+.menu a:hover {
+    background-color: #24273a;
+}
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    min-width: 160px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, visibility 0s linear 0.3s;
+    margin-top: 0.3em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.dropdown-content a {
+    transform: none;
+    opacity: 1;
+    border-radius: 0;
+}
+.dropdown-content a:first-child {
+    border-radius: 4px 4px 0 0;
+}
+.dropdown-content a:last-child {
+    border-radius: 0 0 4px 4px;
+}
+.menu li:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+@keyframes bounceIn {
+    0% {
+    transform: translateY(-20px);
+    opacity: 0;
+    }
+    50% {
+    transform: translateY(1px);
+    opacity: 0.7;
+    }
+    75% {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    }
+    100% {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+.menu a.bounce-in {
+    animation: bounceIn 1s forwards;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    margin-left: 1em;
+    transition: transform 0.3s ease;
+}
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+@media (max-width: 1000px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 0;
+        border-top: 2px solid #444;
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .menu.mobile-active {
+        display: block;
+        transform: scaleY(1);
+    }
+    .menu li {
+        margin: 0;
+        width: 100%;
+    }
+    .menu a {
+        padding: 1em;
+        border-radius: 0;
+        background: none;
+    }
+    .menu a:hover {
+        background-color: #444;
+    }
+    .dropdown-content {
+        position: static;
+        background-color: #444;
+        width: 100%;
+        margin: 0;
+        padding-left: 1em;
+        box-shadow: none;
+        max-height: 0;
+        transform: none;
+        transition: max-height 0.3s ease-in-out;
+        overflow: hidden;
+    }
+    .menu li:hover .dropdown-content {
+        max-height: 300px;
+    }
+    .dropdown-content a {
+        padding-left: 2em;
+    }
+}
